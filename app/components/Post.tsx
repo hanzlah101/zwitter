@@ -36,7 +36,9 @@ const Post: FC<PostProps> = ({ post, currentUser, single }) => {
   const handleLike = async (e: any) => {
     e.stopPropagation();
 
-    currentUser === null && loginModal.onOpen();
+  if (currentUser === null) {
+      return loginModal.onOpen();
+    }
 
     setLikeLoading(true);
 
@@ -53,7 +55,9 @@ const Post: FC<PostProps> = ({ post, currentUser, single }) => {
   const handleBookmark = async (e: any) => {
     e.stopPropagation();
 
-    currentUser === null && loginModal.onOpen();
+   if (currentUser === null) {
+      return loginModal.onOpen();
+    }
 
     setBookmarkLoading(true);
 
