@@ -140,6 +140,7 @@ const Form: FC<FormProps> = ({ currentUser }) => {
         >
           <label className="cursor-pointer" htmlFor="image">
             <input
+              readOnly={isLoading}
               accept="image/png,image/jpg,image/jpeg, image/webp"
               type="file"
               className="hidden"
@@ -163,6 +164,7 @@ const Form: FC<FormProps> = ({ currentUser }) => {
         >
           <label className="cursor-pointer" htmlFor="video">
             <input
+              readOnly={isLoading}
               accept="video/*"
               type="file"
               className="hidden"
@@ -180,6 +182,7 @@ const Form: FC<FormProps> = ({ currentUser }) => {
         >
           <label className="cursor-pointer" htmlFor="gif">
             <input
+              readOnly={isLoading}
               accept="image/gif"
               type="file"
               className="hidden"
@@ -198,6 +201,7 @@ const Form: FC<FormProps> = ({ currentUser }) => {
 
         <div
           title="Emoji"
+          aria-disabled={isLoading}
           className="text-blue-400 hover:bg-blue-50 rounded-full p-2 cursor-pointer"
           onClick={() => setShowPicker(!showPicker)}
         >

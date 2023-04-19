@@ -4,8 +4,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 
 export async function PUT(request: Request) {
   const currentUser = await getCurrentUser();
-  const { fullName, username, dob, email, avatar, coverImage } =
-    await request.json();
+  const { fullName, username, dob, email } = await request.json();
 
   try {
     if (!currentUser) {
@@ -23,12 +22,29 @@ export async function PUT(request: Request) {
     const existingUsername = await prisma.user.findUnique({
       where: { username },
     });
+
     if (existingUsername && existingUsername.id !== currentUser.id) {
       return NextResponse.json(
         { message: "Username already taken" },
         { status: 401 }
       );
     }
+
+    // if (coverImage) {
+    //   const uploadedImage = await v2.uploader.upload(coverImage, {
+    //     folder: "cover_images",
+    //     resource_type: "image",
+    //   });
+
+    //   const user = await prisma.user?.update({
+    //     where: { id: currentUser?.id },
+    //     data: {
+    //       avatar: uploadedImage?.secure_url,
+    //     },
+    //   });
+
+    //   return NextResponse.json({ success: true, user }, { status: 200 });
+    // }
 
     const user = await prisma.user.update({
       where: { id: currentUser?.id },
@@ -37,12 +53,10 @@ export async function PUT(request: Request) {
         username,
         dob,
         email,
-        avatar,
-        coverImage,
       },
     });
 
-    return NextResponse.json({ success: true, user }, { status: 201 });
+    return NextResponse.json({ success: true, user }, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json(
