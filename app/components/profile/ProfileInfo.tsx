@@ -15,14 +15,14 @@ interface ProfileCardProps {
 const ProfileInfo: FC<ProfileCardProps> = ({ user }) => {
   const [location, setLocation] = useState<any>();
 
-  // useEffect(() => {
-  //   axios.get("https://api.ipregistry.co/?key=7efelgucp4wyiol7").then((res) =>
-  //     setLocation({
-  //       country: res.data.location.country.name,
-  //       city: res.data.location.city,
-  //     })
-  //   );
-  // }, []);
+   useEffect(() => {
+     axios.get("https://api.ipregistry.co/?key=7efelgucp4wyiol7").then((res) =>
+      setLocation({
+         country: res.data.location.country.name,
+        city: res.data.location.city,
+      })
+     );
+   }, []);
 
   return (
     <div className="md:mt-[88px] mt-[70px] md:px-8 px-4">
