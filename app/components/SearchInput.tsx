@@ -51,7 +51,7 @@ const SearchInput = () => {
 
           {query !== "" && !isLoading && suggestions?.length === 0 && (
             <div className="p-4 flex items-center text-sm justify-center font-semibold">
-              No user found with "{query}"
+              No user found with &quot;{query}&quot;
             </div>
           )}
         </div>

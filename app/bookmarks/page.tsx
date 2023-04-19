@@ -42,7 +42,7 @@ const Bookmarks = async () => {
           // @ts-ignore
           bookmarks?.length === 0 && (
             <div className="w-full h-[calc(100vh-3.5rem)] flex items-center justify-center font-bold border-x border-b">
-              You don't have any bookmarks yet
+              You don&apos;t have any bookmarks yet
             </div>
           )}
       </div>
