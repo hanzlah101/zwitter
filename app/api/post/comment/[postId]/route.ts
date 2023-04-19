@@ -82,12 +82,14 @@ export async function PUT(request: Request, { params }: { params: IParams }) {
       return NextResponse.json({ message: "No Post Found" }, { status: 400 });
     }
 
-    if (post?.ownerId !== currentUser?.id) {
-      return NextResponse.json(
-        { message: "You are not allowed!" },
-        { status: 400 }
-      );
-    }
+   post?.comments?.forEach((comment: any) => {
+      if (comment?._id !== currentUser?.id) {
+        return NextResponse.json(
+          { message: "You are not allowed!" },
+          { status: 400 }
+        );
+      }
+    });
 
     let commentIds = [...(post?.comments || [])];
 
