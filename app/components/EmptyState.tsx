@@ -2,6 +2,7 @@
 
 import React, { FC } from "react";
 import useLoginModal from "../hooks/useLoginModal";
+import Heading from "./Heading";
 
 interface EmptyStateProps {
   title: string;
@@ -11,8 +12,7 @@ interface EmptyStateProps {
 const EmptyState: FC<EmptyStateProps> = ({ title, subtitle }) => {
   return (
     <div className="w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center fixed top-0 left-0">
-      <h1 className="font-bold md:text-4xl text-3xl">{title}</h1>
-      <h1 className="md:text-xl text-lg text-gray-700">{subtitle}</h1>
+      <Heading title={title} subtitle={subtitle} />
     </div>
   );
 };
