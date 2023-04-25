@@ -87,7 +87,7 @@ const Post: FC<PostProps> = ({ post, currentUser, single }) => {
   };
 
   const isImage = (url: any) => {
-    const extensions = ["jpg", "jpeg", "png", "gif"];
+    const extensions = ["jpg", "jpeg", "png", "gif", "webp"];
     const fileExtension = url.split(".").pop();
     return extensions.includes(fileExtension.toLowerCase());
   };
